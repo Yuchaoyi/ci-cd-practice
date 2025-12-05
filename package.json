@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 0",
-    "lint": "echo 'Lint检查通过！代码质量良好。' && exit 0"
+    "lint": "echo 'Lint检查失败：发现3个代码质量问题！' && exit 1"
   },
   "dependencies": {}
 }
