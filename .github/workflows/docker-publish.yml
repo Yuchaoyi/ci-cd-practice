@@ -47,3 +47,14 @@ jobs:
         tags: |
           ghcr.io/yuchaoyi/ci-cd-practice:latest
           ghcr.io/yuchaoyi/ci-cd-practice:${{ github.sha }}
+  notify:
+    needs: [build-and-push]
+    runs-on: ubuntu-latest
+    if: always()  # 无论成功失败都运行
+    steps:
+      - name: Send Discord Notification
+        uses: sarisia/actions-status-discord@v1
+        with:
+          webhook: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          title: "GitHub Actions 构建结果"
+          description: "工作流 **${{ github.workflow }}** 执行完成\n状态: **${{ job.status }}**\n提交者: ${{ github.actor }}\n分支: ${{ github.ref_name }}"
