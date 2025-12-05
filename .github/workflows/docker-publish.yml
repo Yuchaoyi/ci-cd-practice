@@ -42,4 +42,6 @@ jobs:
       with:
         context: .
         push: true
-        tags:  ghcr.io/yuchaoyi/ci-cd-practice:latest
+        tags: |
+          ghcr.io/yuchaoyi/ci-cd-practice:latest
+          ghcr.io/yuchaoyi/ci-cd-practice:${{ github.sha }}
